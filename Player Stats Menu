@@ -1,0 +1,123 @@
+//=====================================================//
+//User menu with Player stats
+//Review
+//=====================================================//
+#include <iostream>
+using namespace std;
+
+enum CHOICE { attack = 1,defense, stats, quit };
+
+class Player {
+
+ public:
+     Player(int attack);
+     ~Player();
+     int GetAttack ()  { return itsAttack * .15;}
+     int SetAttack () const {return itsAttack;}
+     int GetDefense()  {return itsAttack / 4;}
+	 int GetStats () const { return itsAttack;}
+ private:
+    int itsAttack;
+
+};
+
+Player::Player(int attack)
+{
+  itsAttack = attack;
+
+}
+
+Player::~Player(){}
+
+// function prototype
+int DoMenu();
+int DoAttack(Player);
+int DoDefense(Player);
+int DoStats(Player);
+
+int main()
+{
+ Player user1(100);
+
+ int choice = attack;
+
+ int isQuit = false;
+
+ while(!isQuit)
+    {
+     choice = DoMenu();
+
+     if(choice < attack || choice > quit)
+        {
+         cout << "\nInvalid Choice, try again.";
+	cout << endl << endl;
+
+	continue;
+        }
+
+        switch (choice)
+        {
+     case attack:
+         DoAttack(user1);
+         break;
+     case defense:
+         DoDefense(user1);
+         break;
+	 case stats:
+		 DoStats(user1);
+		 break;
+     case quit:
+        isQuit = true;
+        cout << "\nExiting..." << endl << endl;
+   break;
+   cout << "Error in choice!" << endl;
+   isQuit = true;
+   break;
+
+
+        } //end switch
+    }    //end while
+
+ return 0;
+}   //end main
+
+
+ int DoMenu()
+{
+ int choice;
+
+ cout << endl <<endl;  //create two new lines
+ cout << " ***Menu *** "	<< endl;
+ cout << "(1) Attack "	<< endl;
+ cout << "(2) Defense "  << endl;
+ cout << "(3) Stats "	<< endl;
+ cout << "(4) Quit "	<< endl;
+cin >> choice ;
+return choice;
+}
+int DoAttack(Player user1)
+{
+     int attack  = user1.GetAttack();
+
+ cout << "Player attack damage modifier: " << user1.GetAttack() << endl;
+}
+
+int DoDefense(Player user1)
+{
+ int defense = user1.GetAttack() / 20;
+ cout << "Player defense: " << user1.GetDefense() << endl;
+}
+int DoStats(Player user1)
+{
+  int stats = user1.SetAttack();
+  cout << "Player stats: \n"
+  << "-Attack: "
+  << stats << endl;
+
+  int stats2 = user1.GetDefense();
+  cout << "-Defense: "
+  << stats2 << endl;
+
+}
+
+//==================================== end =====================================================//

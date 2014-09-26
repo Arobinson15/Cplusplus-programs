@@ -10,7 +10,7 @@ enum CHOICE { attack = 1,defense, stats, quit };
 class Player {
 
  public:
-     Player(int attack);
+     Player(int calc);
      ~Player();
      int GetAttack ()  { return itsAttack * .15;}
      int SetAttack () const {return itsAttack;}
@@ -21,9 +21,9 @@ class Player {
 
 };
 
-Player::Player(int attack)
+Player::Player(int calc)
 {
-  itsAttack = attack;
+  itsAttack = calc;
 
 }
 
@@ -97,7 +97,7 @@ return choice;
 }
 int DoAttack(Player user1)
 {
-     int attack  = user1.GetAttack();
+     int calc  = user1.GetAttack();
 
  cout << "Player attack damage modifier: " << user1.GetAttack() << endl;
 }
